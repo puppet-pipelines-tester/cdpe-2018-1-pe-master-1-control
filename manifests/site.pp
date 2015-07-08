@@ -18,7 +18,7 @@
 
 # Define filebucket 'main':
 filebucket { 'main':
-  server => 'localhost',
+  server => $::servername,
   path   => false,
 }
 
