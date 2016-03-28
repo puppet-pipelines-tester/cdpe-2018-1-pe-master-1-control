@@ -10,3 +10,6 @@ mod 'apt',
 mod 'puppet_agent',
   :git => 'https://github.com/puppetlabs/puppetlabs-puppet_agent.git',
   :ref => 'master'
+mod 'transition',
+  :git => 'https://github.com/puppetlabs/puppetlabs-transition.git',
+  :ref => '0.1.0'
