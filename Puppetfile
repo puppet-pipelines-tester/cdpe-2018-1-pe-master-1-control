@@ -12,4 +12,4 @@ mod 'puppet_agent',
   :ref => 'master'
 mod 'transition',
   :git => 'https://github.com/puppetlabs/puppetlabs-transition.git',
-  :ref => '0.1.0'
+  :ref => '0.1.1'
