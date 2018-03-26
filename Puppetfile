@@ -6,7 +6,7 @@ mod 'inifile',
   :ref => '1.2.0'
 mod 'apt',
   :git => 'https://github.com/puppetlabs/puppetlabs-apt.git',
-  :ref => '2.0.1'
+  :ref => '4.4.0'
 mod 'puppet_agent',
   :git => 'https://github.com/puppetlabs/puppetlabs-puppet_agent.git',
   :ref => 'master'
