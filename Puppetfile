@@ -1,6 +1,6 @@
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib.git',
-  :ref => '4.16.0'
+  :ref => '4.25.1'
 mod 'inifile',
   :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git',
   :ref => '2.1.0'
