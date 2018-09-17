@@ -43,7 +43,11 @@ node default {
   notify { "Hello world!": message => "I am in the ${environment} environment"}
 }
 
-node cdpe-ia-agent-5.delivery.puppetlabs.net {
+node 'cdpe-ia-agent-5.delivery.puppetlabs.net' {
   warning("this is a warning from site.pp")
   deprecation("$fake::key", "This fake key has been deprecated for the logs")
+  file { '/tmp/impact_analysis_staging_test':
+    ensure => file,
+    content => 'this is from site.pp'
+  }
 }
