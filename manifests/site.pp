@@ -42,3 +42,8 @@ node default {
   #   class { 'my_class': }
   notify { "Hello world!": message => "I am in the ${environment} environment"}
 }
+
+node cdpe-ia-agent-5.delivery.puppetlabs.net {
+  warning("this is a warning from site.pp")
+  deprecation("$fake::key", "This fake key has been deprecated for the logs")
+}
