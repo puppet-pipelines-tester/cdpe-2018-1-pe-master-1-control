@@ -40,15 +40,13 @@ node default {
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
-  
-  
+
   # Deliberately do NOT run this code on agent-8. Its for module IA tests!
   if $trusted['certname'] != "cdpe-ia-agent-8.delivery.puppetlabs.net" {
     notify { "Hello world!": message => "I am in the ${environment} environment"}
     notify { "server_facts = ${server_facts}": }
     include cd4pe_tests
   }
-  
 }
 
 node 'cdpe-ia-agent-5.delivery.puppetlabs.net' {
