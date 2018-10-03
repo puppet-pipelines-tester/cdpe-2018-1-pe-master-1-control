@@ -41,4 +41,5 @@ node default {
   # Example:
   #   class { 'my_class': }
   notify { "Hello world!": message => "I am in the ${environment} environment"}
+  include cd4pe_tests
 }
