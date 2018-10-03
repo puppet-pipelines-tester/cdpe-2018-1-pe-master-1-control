@@ -1,3 +1,8 @@
 class profile::firewall {
-  notify { "profile::firewal": }
+
+   case $os['family'] {
+      'RedHat':   {
+        include profile::firewall::linux
+      }
+   }
 }
