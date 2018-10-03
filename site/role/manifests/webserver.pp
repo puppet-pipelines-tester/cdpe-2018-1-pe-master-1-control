@@ -4,4 +4,5 @@ class role::webserver {
   include profile::base
   include profile::firewall
   include profile::include_test
+  include profile::nested
 }
