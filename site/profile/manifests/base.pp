@@ -4,6 +4,6 @@ class profile::base {
 
   file { "/tmp/sensitive":
     ensure => file,
-    content => Sensitive("totaly sensitive")
+    content => Sensitive("totaly not sensitive")
   }
 }
