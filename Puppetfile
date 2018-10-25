@@ -10,5 +10,5 @@ mod 'cd4pe',
   :git => 'git@github.com:puppetlabs/puppetlabs-cd4pe.git',
   :ref => 'master'
 mod 'cd4pe_tests',
-  :git => 'git@github.com:puppetlabs/puppetlabs-cd4pe_tests.git',
+  :git => 'https://github.com/puppetlabs/puppetlabs-cd4pe_tests.git',
   :ref => 'staging_change'
