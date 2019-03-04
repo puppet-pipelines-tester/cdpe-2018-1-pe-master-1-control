@@ -2,11 +2,6 @@ mod 'cd4pe',
   :git => 'git@github.com:puppetlabs/puppetlabs-cd4pe.git',
   :ref => 'master'
 
-mod 'cd4pe_tests',
-  :git => 'git@github.com:puppetlabs/puppetlabs-cd4pe_tests.git',
-  :ref => :control_branch
-
-
 # Requirements for cd4pe
 mod 'puppetlabs-concat', '4.2.1'
 mod 'puppetlabs-hocon', '1.0.1'
@@ -15,3 +10,23 @@ mod 'puppetlabs-stdlib', '4.25.1'
 mod 'puppetlabs-docker', '3.2.0'
 mod 'puppetlabs-apt', '6.2.1'
 mod 'puppetlabs-translate', '1.1.0'
+
+# Change the source based on the provider
+#
+require 'socket'
+hostname = Socket.gethostname
+
+case hostname
+when 'cdpe-2018-1-pe-master-1.delivery.puppetlabs.net' # github
+  mod 'cd4pe_tests',
+    :git => 'git@github.com:puppetlabs/puppetlabs-cd4pe_tests.git',
+    :ref => :control_branch
+when 'cdpe-2017-3-pe-master-1.delivery.puppetlabs.net' # gitlab
+  mod 'cd4pe_tests',
+    :git => 'http://cdpe-gitlab-test-1.delivery.puppetlabs.net/cdpe_unit_tests/puppetlabs-cd4pe_tests.git',
+    :ref => :control_branch
+else
+  mod 'cd4pe_tests',
+    :git => 'git@github.com:puppetlabs/puppetlabs-cd4pe_tests.git',
+    :ref => :control_branch
+end
