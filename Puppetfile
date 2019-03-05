@@ -17,13 +17,25 @@ require 'socket'
 hostname = Socket.gethostname
 
 case hostname
+when 'cdpe-2017-3-pe-master-1.delivery.puppetlabs.net' # gitlab
+  mod 'cd4pe_tests',
+    :git => 'http://cdpe-gitlab-test-1.delivery.puppetlabs.net/cdpe_unit_tests/puppetlabs-cd4pe_tests.git',
+    :ref => :control_branch
 when 'cdpe-2018-1-pe-master-1.delivery.puppetlabs.net' # github
   mod 'cd4pe_tests',
     :git => 'git@github.com:puppetlabs/puppetlabs-cd4pe_tests.git',
     :ref => :control_branch
-when 'cdpe-2017-3-pe-master-1.delivery.puppetlabs.net' # gitlab
+when 'cdpe-2018-1-pe-master-2.delivery.puppetlabs.net' # github
   mod 'cd4pe_tests',
-    :git => 'http://cdpe-gitlab-test-1.delivery.puppetlabs.net/cdpe_unit_tests/puppetlabs-cd4pe_tests.git',
+    :git => 'http://puppet-pipelines-tester@cdpe-bitbucket-test-1.delivery.puppetlabs.net:7990/scm/tes/puppetlabs-cd4pe_tests.git',
+    :ref => :control_branch
+when 'cdpe-2018-1-pe-master-3.delivery.puppetlabs.net' # github
+  mod 'cd4pe_tests',
+    :git => 'https://52.23.163.232/RDM-Integration-tests/puppetlabs-cd4pe_tests.git',
+    :ref => :control_branch
+when 'cdpe-pe-master-ado.delivery.puppetlabs.net' # github
+  mod 'cd4pe_tests',
+    :git => 'https://cd4peAzureDevOpsTest@dev.azure.com/cd4peAzureDevOpsTest/CD4PE%20Azure%20DevOps%20Test%20Project/_git/puppetlabs-cd4pe_tests',
     :ref => :control_branch
 else
   mod 'cd4pe_tests',
