@@ -27,7 +27,7 @@ when 'cdpe-2018-1-pe-master-1.delivery.puppetlabs.net' # github
     :ref => :control_branch
 when 'cdpe-2018-1-pe-master-2' # bitbucket
   mod 'cd4pe_tests',
-    :git => 'http://puppet-pipelines-tester@cdpe-bitbucket-test-1.delivery.puppetlabs.net:7990/scm/tes/puppetlabs-cd4pe_tests.git',
+    :git => 'ssh://git@cdpe-bitbucket-test-1.delivery.puppetlabs.net:7999/tes/puppetlabs-cd4pe_tests.git',
     :ref => :control_branch
 when 'cdpe-2018-1-pe-master-3' # github enterprise
   mod 'cd4pe_tests',
