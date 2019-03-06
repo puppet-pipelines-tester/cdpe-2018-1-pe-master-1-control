@@ -38,7 +38,5 @@ when 'cdpe-pe-master-ado' # ado
     :git => 'https://cd4peAzureDevOpsTest@dev.azure.com/cd4peAzureDevOpsTest/CD4PE%20Azure%20DevOps%20Test%20Project/_git/puppetlabs-cd4pe_tests',
     :ref => :control_branch
 else
-  mod 'cd4pe_tests',
-    :git => 'git@github.com:puppetlabs/puppetlabs-cd4pe_tests.git',
-    :ref => :control_branch
+  raise "Error mapping hostname to cd4pe_tests module source"
 end
