@@ -31,7 +31,7 @@ when 'cdpe-2018-1-pe-master-2' # bitbucket
     :ref => :control_branch
 when 'cdpe-2018-1-pe-master-3' # github enterprise
   mod 'cd4pe_tests',
-    :git => 'https://52.23.163.232/RDM-Integration-tests/puppetlabs-cd4pe_tests.git',
+    :git => 'git@52.23.163.232:RDM-Integration-tests/puppetlabs-cd4pe_tests.git',
     :ref => :control_branch
 when 'cdpe-pe-master-ado' # ado
   mod 'cd4pe_tests',
