@@ -1,15 +1,12 @@
-mod 'stdlib',
-  :git => 'https://github.com/puppetlabs/puppetlabs-stdlib.git',
-  :ref => '4.16.0'
-mod 'inifile',
-  :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git',
-  :ref => '2.1.0'
-mod 'apt',
-  :git => 'https://github.com/puppetlabs/puppetlabs-apt.git',
-  :ref => '4.4.0'
-mod 'puppet_agent',
-  :git => 'https://github.com/puppetlabs/puppetlabs-puppet_agent.git',
+mod 'cd4pe',
+  :git => 'git@github.com:puppetlabs/puppetlabs-cd4pe.git',
   :ref => 'master'
-mod 'transition',
-  :git => 'https://github.com/puppetlabs/puppetlabs-transition.git',
-  :ref => '0.1.1'
+
+# Requirements for cd4pe
+mod 'puppetlabs-concat', '4.2.1'
+mod 'puppetlabs-hocon', '1.0.1'
+mod 'puppetlabs-puppet_authorization', '0.5.0'
+mod 'puppetlabs-stdlib', '4.25.1'
+mod 'puppetlabs-docker', '3.2.0'
+mod 'puppetlabs-apt', '6.2.1'
+mod 'puppetlabs-translate', '1.1.0'
