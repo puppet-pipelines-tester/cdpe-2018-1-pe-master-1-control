@@ -17,7 +17,7 @@ require 'socket'
 hostname = Socket.gethostname
 
 case hostname
-when 'cdpe-2017-3-pe-master-1.delivery.puppetlabs.net' # gitlab
+when 'cdpe-2017-3-pe-master-1.delivery.puppetlabs.net', 'cdpe-pe-master-gitlab' # gitlab
   mod 'cd4pe_tests',
     :git => 'http://cdpe-gitlab-test-1.delivery.puppetlabs.net/cdpe_unit_tests/puppetlabs-cd4pe_tests.git',
     :ref => :control_branch
