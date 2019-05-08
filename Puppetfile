@@ -1,3 +1,6 @@
+require 'pry'
+binding.pry
+
 # Requirements for cd4pe
 mod 'puppetlabs-concat', '4.2.1'
 mod 'puppetlabs-hocon', '1.0.1'
