@@ -20,4 +20,4 @@ mod 'puppetlabs-translate', '1.1.0'
 mod 'puppetlabs-cd4pe_test',
   :git => 'git@github.com:puppetlabs/puppetlabs-cd4pe_test.git', 
   :ref => :control_branch, 
-  :default => default_branch('master')
+  :default_branch => default_branch('master')
