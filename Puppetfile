@@ -17,7 +17,7 @@ def default_branch(default)
     environment = @librarian.environment.name
     match = regex.match(environment)
     if match ? match[1]:default
-  rescue
+  rescue => e
     default
   end
 end
