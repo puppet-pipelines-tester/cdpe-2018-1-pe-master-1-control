@@ -1,8 +1,6 @@
 def default_branch(default)
   begin
-    regex = /(.+)_(cdpe|cdpe_ia)_\d+$/
-    environment = @librarian.environment.name
-    match = regex.match(environment)
+    match = /(.+)_(cdpe|cdpe_ia)_\d+$/.match(@librarian.environment.name)
     match ? match[1]:default
   rescue
     default
