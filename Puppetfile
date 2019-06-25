@@ -1,6 +1,9 @@
 mod 'cd4pe',
   :git => 'git@github.com:puppetlabs/puppetlabs-cd4pe.git',
   :ref => 'master'
+mod 'clamps',
+  :git => 'git@github.com:puppetlabs/clamps.git',
+  :ref => 'master'
 
 # Requirements for cd4pe
 mod 'puppetlabs-concat', '4.2.1'
