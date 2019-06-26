@@ -28,8 +28,18 @@ class profile::base {
     }
   }
 
-  file { '/tmp/diff-file-params':
-    path => "/tmp/${facts['id']}",
-    content => 'diff on each user staging',
+  if $facts['id'] =~ /^user[1-2]/ {
+    file { '/tmp/diff-file-params':
+      path => "/tmp/${facts['id']}",
+      content => 'diff on each user but 1 and 2',
+    }
+  } else {
+    file { '/tmp/diff-file-params':
+      path => "/tmp/${facts['id']}",
+      content => 'diff on each user staging',
+    }
   }
+
+
+
 }
