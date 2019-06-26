@@ -7,17 +7,6 @@ class profile::base {
     content => Sensitive("totaly not sensitive")
   }
 
-  class { 'clamps': 
-    num_dynamic_files => 1,
-    num_static_files  => 1,
-  }
-
-  class { 'clamps::agent': 
-    environment => 'impact_analysis_tests_staging',
-    num_dynamic_files => 1,
-    num_static_files  => 1,
-  }
-
   file { "/home/root":
     ensure => directory
   }
@@ -34,7 +23,6 @@ class profile::base {
 
   file { '/tmp/diff-file-params':
     path => "/tmp/${facts['id']}",
-    content => 'diff on each user',
+    content => 'diff on each user staging',
   }
->>>>>>> f8d0eb3... (maint) Add clamps for more resource / nodes tests
 }
