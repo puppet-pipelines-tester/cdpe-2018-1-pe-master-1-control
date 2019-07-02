@@ -18,6 +18,7 @@ class profile::base {
     }
   } else {
     class { 'clamps::agent': 
+      nonroot_users => 5,
     }
   }
 
