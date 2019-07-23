@@ -15,4 +15,4 @@ mod 'transition',
   :ref => '0.1.1'
 mod 'cd4pe_tests',
   :git => 'https://github.com/puppetlabs/puppetlabs-cd4pe_tests.git',
-  :default_branch => :control_branch
+  :branch => :control_branch
