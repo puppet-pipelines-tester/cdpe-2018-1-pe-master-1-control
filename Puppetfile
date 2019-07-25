@@ -12,7 +12,7 @@ mod 'puppet_agent',
   :ref => 'master'
 mod 'transition',
   :git => 'https://github.com/puppetlabs/puppetlabs-transition.git',
-  :ref => '0.1.1'
+  :ref => '0.1.0'
 mod 'cd4pe_tests',
   :git => 'https://github.com/puppetlabs/puppetlabs-cd4pe_tests.git',
   :branch => :control_branch
