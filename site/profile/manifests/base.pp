@@ -2,6 +2,11 @@ class profile::base {
   #the base profile should include component modules that will be on all nodes
   notify {"profile::base": }
 
+  $var = lookup('profile::base::hiera_lookup_test')
+  notify { "value_from_hiera":
+    message => $var,
+  }
+
   file { "/tmp/sensitive":
     ensure => file,
     content => Sensitive("totaly sensitive")
