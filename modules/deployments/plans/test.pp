@@ -3,7 +3,7 @@ plan deployments::test(
   Boolean $should_fail = false,
 ) {
   if($should_fail) {
-    fail("The plan deployment failed!")
+    fail("This is a forced failure from the test plan!")
   }
 
   $target = get_targets($nodes)[0]
