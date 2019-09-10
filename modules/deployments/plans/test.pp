@@ -9,5 +9,5 @@ plan deployments::test(
   $target = get_targets($nodes)[0]
   $target.set_var('newly_provisioned', true)
   $targetvars = $target.vars
-  run_command("echo 'Vars for ${host}: ${$targetvars}'", $host)
+  run_command("echo 'Vars for ${$target}: ${$targetvars}'", $target)
 }
