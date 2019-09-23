@@ -1,0 +1,74 @@
+spec_version: v1
+config:
+  enable_pull_requests_from_forks: true
+pipelines:
+  /feature_.*/:
+    triggers:
+      - pull_request
+      - commit
+    stages:
+      - name: "Lint/Parser validation"
+        auto_promote: all_succeeded
+        steps:
+          - type: job
+            name: control-repo-puppetfile-syntax-validate
+          - type: job
+            name: control-repo-template-syntax-validate
+      - name: "Deploy feature environment"
+        steps:
+          - type: deployment
+            pe_server: cdpe-delivery
+            policy: feature_branch
+            target:
+              type: node_group
+              node_group_id: 123-guid-123
+  master:
+    triggers:
+      - pull_request
+      - commit
+    stages:
+      - name: "Lint/Parser validation"
+        auto_promote: all_succeeded
+        steps:
+          - type: job
+            name: control-repo-puppetfile-syntax-validate
+          - type: job
+            name: control-repo-template-syntax-validate
+      - name: "Impact Analysis"
+        auto_promote: any_succeeded
+        steps:
+          - type: impact_analysis
+            concurrent_compilations: 10
+            all_deployments: true #takes precedence over 'deployments'
+            deployments:
+              - "Direct merge to Production"
+              - "my custom deploy 1"
+          - type: pull_request_gate
+      - name: "Deploy to lower UAT"
+        auto_promote: false
+        steps:
+          - type: deployment
+            policy: direct_merge
+            name: "Direct merge to Production"
+            pe_server: cdpe-delivery
+            target:
+              type: node_group
+              node_group_id: 123-guid-123
+            parameters:
+              node_group: "Production Environment"
+              pql: 'Node { catalog_environment == "production" }'
+              stop_if_nodes_fail: 10
+              noop: false
+              timeout: 60
+          - type: deployment
+            name: "my custom deploy 1"
+            policy:
+              source: control-repo
+              name: deployments::custom_policy1
+            pe_server: oaiwjeofijawoiefj
+            target:
+              type: node_group
+              node_group_id: 123-guid-123
+            parameters:
+              custom_param1: custom_value
+              custom_param2: custom_value
