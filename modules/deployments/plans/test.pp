@@ -9,6 +9,7 @@ plan deployments::test(
 
   if($sleep) {
     ctrl::sleep(60)
+    return "Did sleep!"
   }
 
 
