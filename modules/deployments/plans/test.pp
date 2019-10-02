@@ -1,10 +1,17 @@
 plan deployments::test(
   Optional[TargetSpec] $nodes = undef,
   Boolean $should_fail = false,
+  Boolean $sleep = false,
 ) {
   if($should_fail) {
     fail("This is a forced failure from the test plan!")
   }
+
+  if($sleep) {
+    ctrl::sleep(60)
+  }
+
+
   $test_env_var = system::env('TEST_ENV_VAR')
   if($nodes) {
     return run_command("hostname", $nodes)
