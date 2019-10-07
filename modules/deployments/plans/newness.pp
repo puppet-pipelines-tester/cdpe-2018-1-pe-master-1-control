@@ -1,8 +1,8 @@
 plan deployments::newness(
   Optional[TargetSpec] $nodes = undef,
   Boolean $should_fail = false,
-  String boo,
-  bar
+  String $boo,
+  $bar
 ) {
   if($should_fail) {
     fail("This is a forced failure from the test plan!")
