@@ -7,10 +7,10 @@ plan deployments::test(
     fail("This is a forced failure from the test plan!")
   }
 
-  cd4pe_deployments::get_node_group("test")
+  notify {cd4pe_deployments::get_node_group("test"): }
 
   if($sleep) {
-    ctrl::sleep(60)
+    ctrl::sleep(10)
     return "Did sleep!"
   }
 
