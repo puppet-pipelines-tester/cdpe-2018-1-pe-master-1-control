@@ -7,6 +7,8 @@ plan deployments::test(
     fail("This is a forced failure from the test plan!")
   }
 
+  get_node_group("test")
+
   if($sleep) {
     ctrl::sleep(60)
     return "Did sleep!"
