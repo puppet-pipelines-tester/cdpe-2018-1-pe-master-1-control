@@ -8,7 +8,7 @@ plan deployments::test(
   }
 
   out::message("before get node group")
-  return cd4pe_deployments::get_node_group("test")
+  return cd4pe_deployments::get_node_group(system::env("NODE_GROUP_ID"))
 
   if($sleep) {
     ctrl::sleep(10)
