@@ -7,8 +7,7 @@ plan deployments::test(
     fail("This is a forced failure from the test plan!")
   }
 
-  out::message("before get node group")
-  return cd4pe_deployments::get_node_group(system::env("NODE_GROUP_ID"))
+  return run_command("hostname", "cdpe-ia-agent-4.delivery.puppetlabs.net")
 
   if($sleep) {
     ctrl::sleep(10)
