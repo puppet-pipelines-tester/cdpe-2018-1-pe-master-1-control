@@ -7,7 +7,7 @@ plan deployments::test(
     fail("This is a forced failure from the test plan!")
   }
 
-  return run_command("hostname", "cdpe-ia-agent-4.delivery.puppetlabs.net")
+  return run_task("facter_task", "cdpe-ia-agent-4.delivery.puppetlabs.net", fact => 'hostname')
 
   if($sleep) {
     ctrl::sleep(10)
