@@ -1,6 +1,7 @@
 spec_version: v1
 config:
   enable_pull_requests_from_forks: true
+  deployment_policy_branch: production
 pipelines:
   /feature_.*/:
     triggers:
@@ -17,7 +18,7 @@ pipelines:
       - name: "Deploy feature environment"
         steps:
           - type: deployment
-            pe_server: cdpe-delivery
+            pe_server: Test_PE_Credentials
             policy: feature_branch
             target:
               type: node_group
@@ -39,7 +40,7 @@ pipelines:
         steps:
           - type: impact_analysis
             concurrent_compilations: 10
-            all_deployments: true #takes precedence over 'deployments'
+            all_deployments: false #takes precedence over 'deployments'
             deployments:
               - "Direct merge to Production"
               - "my custom deploy 1"
@@ -50,22 +51,23 @@ pipelines:
           - type: deployment
             policy: direct_merge
             name: "Direct merge to Production"
-            pe_server: cdpe-delivery
+            pe_server: Test_PE_Credentials
             target:
               type: node_group
               node_group_id: 123-guid-123
+              environment_prefix: gitlab_
             parameters:
               node_group: "Production Environment"
-              pql: 'Node { catalog_environment == "production" }'
-              stop_if_nodes_fail: 10
               noop: false
+              pql: 'Node { catalog_environment == "production" }'
               timeout: 60
+              stop_if_nodes_fail: 10
           - type: deployment
             name: "my custom deploy 1"
             policy:
               source: control-repo
               name: deployments::custom_policy1
-            pe_server: oaiwjeofijawoiefj
+            pe_server: Test_PE_Credentials
             target:
               type: node_group
               node_group_id: 123-guid-123
