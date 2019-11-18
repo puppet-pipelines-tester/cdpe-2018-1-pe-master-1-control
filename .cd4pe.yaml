@@ -4,7 +4,13 @@ pipelines:
   /feature_.*/:
     triggers:
     - "COMMIT"
-    stages: []
+    stages:
+    - name: "Code Validation stage"
+      steps:
+      - type: "JOB"
+        name: "control-repo-manifest-validate"
+        concurrent_compilations: 0
+        all_deployments: false
   master:
     triggers:
     - "COMMIT"
