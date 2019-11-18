@@ -1,77 +1,51 @@
-spec_version: v1
 config:
-  enable_pull_requests_from_forks: true
-  deployment_policy_branch: production
+  enable_pull_requests_from_forks: false
 pipelines:
-  /feature_.*/:
-    triggers:
-      - pull_request
-      - commit
-    stages:
-      - name: "Lint/Parser validation"
-        auto_promote: all_succeeded
-        steps:
-          - type: job
-            name: control-repo-puppetfile-syntax-validate
-          - type: job
-            name: control-repo-template-syntax-validate
-      - name: "Deploy feature environment"
-        steps:
-          - type: deployment
-            pe_server: gitlab
-            policy: feature_branch
-            target:
-              type: node_group
-              node_group_id: 123-guid-123
   master:
     triggers:
-      - pull_request
-      - commit
+    - "COMMIT"
     stages:
-      - name: "Lint/Parser validation"
-        auto_promote: all_succeeded
-        steps:
-          - type: job
-            name: control-repo-puppetfile-syntax-validate
-          - type: job
-            name: control-repo-template-syntax-validate
-      - name: "Impact Analysis"
-        auto_promote: any_succeeded
-        steps:
-          - type: impact_analysis
-            concurrent_compilations: 10
-            all_deployments: false #takes precedence over 'deployments'
-            deployments:
-              - "Direct merge to Production"
-              - "my custom deploy 1"
-          - type: pull_request_gate
-      - name: "Deploy to lower UAT"
-        auto_promote: false
-        steps:
-          - type: deployment
-            policy: direct_merge
-            name: "Direct merge to Production"
-            pe_server: gitlab
-            target:
-              type: node_group
-              node_group_id: 123-guid-123
-              environment_prefix: gitlab_
-            parameters:
-              node_group: "Production Environment"
-              noop: false
-              pql: 'Node { catalog_environment == "production" }'
-              timeout: 60
-              stop_if_nodes_fail: 10
-          - type: deployment
-            name: "my custom deploy 1"
-            policy:
-              source: control-repo
-              name: deployments::custom_policy1
-            pe_server: gitlab
-            target:
-              type: node_group
-              node_group_id: 123-guid-123
-            parameters:
-              custom_param1: custom_value
-              custom_param2: custom_value
-
+    - name: "Code Validation stage"
+      steps:
+      - type: "JOB"
+        name: "control-repo-manifest-validate"
+        concurrent_compilations: 0
+        all_deployments: false
+      - type: "JOB"
+        name: "control-repo-hiera-syntax-validate"
+        concurrent_compilations: 0
+        all_deployments: false
+      - type: "JOB"
+        name: "control-repo-template-syntax-validate"
+        concurrent_compilations: 0
+        all_deployments: false
+      - type: "JOB"
+        name: "control-repo-puppetfile-syntax-validate"
+        concurrent_compilations: 0
+        all_deployments: false
+      auto_promote: "all_succeeded"
+    - name: "Impact Analysis stage"
+      steps:
+      - type: "IMPACT_ANALYSIS"
+        concurrent_compilations: 10
+        all_deployments: true
+      - type: "PULL_REQUEST_GATE"
+        concurrent_compilations: 0
+        all_deployments: false
+      auto_promote: false
+    - name: "Deployment stage"
+      steps:
+      - type: "DEPLOYMENT"
+        policy:
+          name: "cd4pe_deployments::direct"
+        parameters:
+          noop: false
+        timeout: 3600000
+        concurrent_compilations: 0
+        all_deployments: false
+        pe_server: "gitlab"
+        target:
+          type: "NODE_GROUP"
+          node_group_id: "ea8eb9f8-1b36-4f80-aef4-1a85aca546d0"
+      auto_promote: false
+spec_version: "V1"
