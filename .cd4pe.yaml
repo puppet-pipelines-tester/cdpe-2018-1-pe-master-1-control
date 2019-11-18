@@ -1,6 +1,10 @@
 config:
   enable_pull_requests_from_forks: false
 pipelines:
+  /feature_.*/:
+    triggers:
+    - "COMMIT"
+    stages: []
   master:
     triggers:
     - "COMMIT"
@@ -49,3 +53,4 @@ pipelines:
           node_group_id: "ea8eb9f8-1b36-4f80-aef4-1a85aca546d0"
       auto_promote: false
 spec_version: "V1"
+
