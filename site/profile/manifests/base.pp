@@ -7,6 +7,11 @@ class profile::base {
     message => $var,
   }
 
+  $var2 = lookup('profile::base::hiera_lookup_test2')
+  notify { "2nd value from hiera":
+    message => $var2,
+  }
+
   file { "/tmp/sensitive":
     ensure => file,
     content => Sensitive("totaly not sensitive")
@@ -17,12 +22,12 @@ class profile::base {
   }
 
   if $facts['id'] =~ /^user/ {
-    class { 'clamps': 
+    class { 'clamps':
       num_dynamic_files => 1,
       num_static_files  => 1,
     }
   } else {
-    class { 'clamps::agent': 
+    class { 'clamps::agent':
       nonroot_users => 5,
       daemonize => true,
     }
