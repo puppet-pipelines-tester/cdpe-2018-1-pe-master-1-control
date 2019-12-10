@@ -1,0 +1,2 @@
+---
+profile::base::hiera_lookup_test3: "staging3"
