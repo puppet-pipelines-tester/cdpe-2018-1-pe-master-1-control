@@ -10,3 +10,21 @@ hierarchy:
     paths:
       - "nodes/%{trusted.certname}.yaml"
       - "common.yaml"
+  - name: "Yaml backend 2"
+    data_hash: yaml_data
+    datadir: "data2"
+    paths:
+      - "nodes/%{trusted.certname}.yaml"
+      - "common.yaml"
+  - name: "Yaml backend 3"
+    data_hash: yaml_data
+    datadir: "data3"
+    paths:
+      - "nodes/%{trusted.certname}.yaml"
+      - "common.yaml"
+  - name: "Yaml backend 4"
+    data_hash: yaml_data
+    datadir: "data4"
+    paths:
+      - "nodes/%{trusted.certname}.yaml"
+      - "common.yaml"
