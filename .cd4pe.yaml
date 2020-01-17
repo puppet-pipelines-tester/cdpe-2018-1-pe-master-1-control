@@ -26,39 +26,4 @@ pipelines:
           type: "NODE_GROUP"
           node_group_id: "250fd263-8456-4114-b559-9c6d9fa27748"
       auto_promote: false
-  master:
-    triggers:
-    - "COMMIT"
-    stages:
-    - name: "Code Validation stage"
-      steps:
-      - type: "JOB"
-        name: "control-repo-manifest-validate"
-        concurrent_compilations: 0
-        all_deployments: false
-      - type: "JOB"
-        name: "control-repo-hiera-syntax-validate"
-        concurrent_compilations: 0
-        all_deployments: false
-      - type: "JOB"
-        name: "control-repo-template-syntax-validate"
-        concurrent_compilations: 0
-        all_deployments: false
-      - type: "JOB"
-        name: "control-repo-puppetfile-syntax-validate"
-        concurrent_compilations: 0
-        all_deployments: false
-      auto_promote: "all_succeeded"
-    - name: "Impact Analysis stage"
-      steps:
-      - type: "IMPACT_ANALYSIS"
-        concurrent_compilations: 10
-        all_deployments: true
-      - type: "PULL_REQUEST_GATE"
-        concurrent_compilations: 0
-        all_deployments: false
-      auto_promote: false
-    - name: "Deployment stage"
-      steps: []
-      auto_promote: false
 spec_version: "V1"
