@@ -9,9 +9,11 @@ pipelines:
     - name: "Pipeline Stage 1"
       steps:
       - type: "IMPACT_ANALYSIS"
+        deployments:
+        - "Deployment to impact_analysis_tests_prod on pe-github"
         concurrent_compilations: 10
-        all_deployments: true
-        impact_analysis_hiera_regex: '^doesnotexist$'
+        impact_analysis_hiera_regex: '^hieradata/.+$'
+        all_deployments: false
       auto_promote: false
     - name: "Pipeline Stage 2"
       steps:
