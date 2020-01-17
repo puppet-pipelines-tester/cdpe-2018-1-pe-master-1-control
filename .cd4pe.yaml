@@ -11,7 +11,7 @@ pipelines:
       - type: "IMPACT_ANALYSIS"
         concurrent_compilations: 10
         all_deployments: true
-        impact_analysis_hiera_regex: '^doesnotexist'
+        impact_analysis_hiera_regex: '^doesnotexist$'
       auto_promote: false
     - name: "Pipeline Stage 2"
       steps:
