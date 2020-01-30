@@ -1,0 +1,23 @@
+config:
+  enable_pull_requests_from_forks: false
+  deployment_policy_branch: "pac-3.2.0-test-2"
+pipelines:
+  impact_analysis_tests_staging:
+    triggers:
+    - "COMMIT"
+    stages:
+    - name: "Pipeline Stage 1"
+      steps:
+      - type: "DEPLOYMENT"
+        name: "Deployment to production on PE-GITHUB"
+        policy:
+          name: "cd4pe_deployments::eventual_consistency"
+        timeout: 3600000
+        concurrent_compilations: 0
+        all_deployments: false
+        pe_server: "PE-GITHUB"
+        target:
+          type: "NODE_GROUP"
+          node_group_id: "5499bcea-06fd-4f46-a3d9-31aeb9b69f6a"
+      auto_promote: false
+spec_version: "V1"
