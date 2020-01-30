@@ -6,7 +6,7 @@ pipelines:
     triggers:
     - "COMMIT"
     stages:
-    - name: "Pipeline Stage 1"
+    - name: "Pipeline Stage YOLO"
       steps:
       - type: "DEPLOYMENT"
         name: "Deployment to production on PE-GITHUB"
