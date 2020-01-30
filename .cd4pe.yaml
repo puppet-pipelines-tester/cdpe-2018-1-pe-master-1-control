@@ -2,10 +2,6 @@ config:
   enable_pull_requests_from_forks: false
   deployment_policy_branch: "pac-3.2.0-test-2"
 pipelines:
-  impact_analysis_tests_staging:
-    triggers:
-    - "COMMIT"
-    stages: []
   pac-3.2.0-test-2:
     triggers:
     - "COMMIT"
