@@ -9,7 +9,7 @@
 #     The number of allowed failed Puppet runs that can occur before the Deployment will fail
 # @param noop
 #     Indicates if the Puppet run should be a noop.
-plan cd4pe_deployments::direct (
+plan deployments::my_cool_plan (
   Integer $max_node_failure = 0,
   Boolean $noop = false,
 ) {
