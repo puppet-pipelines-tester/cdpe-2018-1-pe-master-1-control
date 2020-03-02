@@ -4,7 +4,7 @@ mod 'cd4pe',
 mod 'clamps',
   :git => 'https://github.com/puppetlabs/clamps.git',
   :ref => 'master'
-mod 'cd4pe_jobs'
+mod 'cd4pe_jobs',
   :git => 'https://github.com/puppetlabs/puppetlabs-cd4pe_jobs.git',
   :ref => 'master'
 
