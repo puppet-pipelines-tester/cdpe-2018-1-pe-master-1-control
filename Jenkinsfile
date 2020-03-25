@@ -9,7 +9,7 @@ node('worker') {
           echo 'ssh -i '"${CDPE_SSH_KEY}"' $*' > ssh
           chmod +x ssh
           export GIT_SSH='./ssh'
-          git checkout master
+          git checkout pe_java_sdk_only_git_puppetfile
 
           echo 'pushing to gitlab'
           git remote add gitlab git@cdpe-gitlab-test-1.delivery.puppetlabs.net:cdpe_unit_tests/cdpe-2017-3-pe-master-1-control.git || true
@@ -27,11 +27,11 @@ node('worker') {
           git remote add bitbucket-cloud git@bitbucket.org:cd4peteam/control-repo.git || true
           git push bitbucket-cloud ${BRANCH_NAME} -f
 
-          echo 'pushing to bitbucket-cloud'
+          echo 'pushing to github'
           git remote add github git@github.com:puppet-pipelines-tester/cdpe-2018-1-pe-master-1-control.git || true
           git push github ${BRANCH_NAME} -f
 
-          echo 'pushing to bitbucket-cloud'
+          echo 'pushing to github enterprise'
           git remote add githubenterprise git@cdpe-github-enterprise-test-1.delivery.puppetlabs.net:RDM-Integration-tests/cdpe-2018-1-pe-master-3-control.git || true
           git push githubenterprise ${BRANCH_NAME} -f
         '''
