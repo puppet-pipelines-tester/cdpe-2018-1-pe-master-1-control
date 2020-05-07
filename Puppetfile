@@ -1,3 +1,17 @@
+def default_branch(default)
+  begin
+    match = /(.+)_(cdpe|cdpe_ia)_\d+$/.match(@librarian.environment.name)
+    match ? match[1]:default
+  rescue
+    default
+  end
+end
+
+mod 'puppetlabs-cd4pe_tests',
+  :git => 'ssh://git@cdpe-bitbucket-test-1.delivery.puppetlabs.net:7999/tes/puppetlabs-cd4pe_tests.git',
+  :branch => :control_branch, 
+  :default_branch => default_branch('master')
+
 mod 'cd4pe',
   :git => 'git@github.com:puppetlabs/puppetlabs-cd4pe.git',
   :ref => 'master'
