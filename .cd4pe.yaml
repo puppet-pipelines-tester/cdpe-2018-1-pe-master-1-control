@@ -12,6 +12,7 @@ pipelines:
       - type: "IMPACT_ANALYSIS"
         concurrent_compilations: 10
         all_deployments: true
+        puppetdb_connection_timeout_sec: 1
       - type: "PULL_REQUEST_GATE"
         concurrent_compilations: 0
         all_deployments: false
@@ -31,7 +32,7 @@ pipelines:
         pe_server: "github"
         target:
           type: "NODE_GROUP"
-          node_group_id: "c5ad4792-12a5-4cd9-9a2a-ea3d07d384b9"
+          node_group_id: "efd3b45c-97ab-4c9c-a261-a65c18475223"
       auto_promote: false
   master:
     triggers:
