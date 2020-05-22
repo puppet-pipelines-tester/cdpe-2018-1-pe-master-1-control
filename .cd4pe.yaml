@@ -52,13 +52,4 @@ pipelines:
         concurrent_compilations: 0
         all_deployments: false
       auto_promote: false
-    - name: "Impact Analysis stage"
-      steps:
-      - type: "IMPACT_ANALYSIS"
-        concurrent_compilations: 10
-        all_deployments: true
-      - type: "PULL_REQUEST_GATE"
-        concurrent_compilations: 0
-        all_deployments: false
-      auto_promote: false
 spec_version: "V1"
