@@ -18,7 +18,7 @@ pipelines:
       - name: "Deploy feature environment"
         steps:
           - type: deployment
-            pe_server: gitlab-pe
+            pe_server: github-pe
             policy: feature_branch
             target:
               type: node_group
@@ -51,7 +51,7 @@ pipelines:
           - type: deployment
             policy: direct_merge
             name: "Direct merge to Production"
-            pe_server: gitlab-pe
+            pe_server: github-pe
             target:
               type: node_group
               node_group_id: 123-guid-123
@@ -67,7 +67,7 @@ pipelines:
             policy:
               source: control-repo
               name: deployments::custom_policy1
-            pe_server: gitlab-pe
+            pe_server: github-pe
             target:
               type: node_group
               node_group_id: 123-guid-123
