@@ -40,6 +40,7 @@ pipelines:
         steps:
           - type: impact_analysis
             concurrent_compilations: 10
+            impact_analysis_hiera_regex: /*whatever/
             all_deployments: false #takes precedence over 'deployments'
             deployments:
               - "Direct merge to Production"
