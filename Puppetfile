@@ -1,6 +1,6 @@
 mod 'cd4pe',
   :git => 'git@github.com:puppetlabs/puppetlabs-cd4pe.git',
-  :ref => 'master'
+  :ref => 'CDPE-3761/fix-tasks-for-40'
 mod 'clamps',
   :git => 'https://github.com/puppetlabs/clamps.git',
   :ref => 'master'
