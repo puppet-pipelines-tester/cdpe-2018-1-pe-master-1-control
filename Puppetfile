@@ -1,6 +1,6 @@
 mod 'cd4pe',
   :git => 'https://github.com/puppetlabs/puppetlabs-cd4pe.git',
-  :ref => 'master'
+  :ref => 'main'
 mod 'clamps',
   :git => 'https://github.com/puppetlabs/clamps.git',
   :ref => 'master'
