@@ -5,7 +5,7 @@ mod 'puppetlabs-hocon', '1.0.1'
 mod 'puppetlabs-concat', '4.2.1'
 mod 'cd4pe',
   :git => 'git@github.com:puppetlabs/puppetlabs-cd4pe.git',
-  :ref => 'master'
+  :ref => 'main'
 mod 'clamps',
   :git => 'https://github.com/puppetlabs/clamps.git',
   :ref => 'master'
